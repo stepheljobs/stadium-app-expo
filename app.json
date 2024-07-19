@@ -31,6 +31,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f4a50bed-52b3-4c9d-aef0-d456cb0b7a6c"
+      }
+    },
+    "owner": "stepheljobs"
   }
 }
