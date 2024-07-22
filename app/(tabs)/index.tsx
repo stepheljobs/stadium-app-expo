@@ -131,9 +131,9 @@ export default function FitnessFeed() {
     // Add more feed items as needed
   ]);
 
-  const handleLike = (id) => {
+  const handleLike = (id: any) => {
     setFeedItems(
-      feedItems.map((item) =>
+      feedItems.map((item: any) =>
         item.id === id
           ? {
               ...item,
@@ -145,7 +145,7 @@ export default function FitnessFeed() {
     );
   };
 
-  const handleComment = (id, comment) => {
+  const handleComment = (id: any, comment: any) => {
     if (!comment) return;
     setFeedItems(
       feedItems.map((item: any) =>
@@ -176,7 +176,7 @@ export default function FitnessFeed() {
           onComment={handleComment}
         />
       )}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item: any) => item.id.toString()}
     />
   );
 }

@@ -3,6 +3,7 @@ import { Box, Text, VStack, FormControl, Input, Link, Button, HStack, Center, Ic
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function RegisterScreen() {
+
   return (
     <Center flex={1} px="3">
       <Box safeArea p="2" w="90%" maxW="290" py="8">
@@ -44,12 +45,12 @@ export default function RegisterScreen() {
           <Button mt="2" colorScheme="indigo">
             Continue
           </Button>
-          <HStack mt="6" justifyContent="center">
+          {/* <HStack mt="6" justifyContent="center">
             <Text fontSize="sm" color="coolGray.600">
               or
             </Text>
-          </HStack>
-          <HStack space={3} justifyContent="center">
+          </HStack> */}
+          {/* <HStack space={3} justifyContent="center">
             <Pressable>
               <Icon as={MaterialIcons} name="apple" color="black" size="md" />
             </Pressable>
@@ -59,12 +60,18 @@ export default function RegisterScreen() {
             <Pressable>
               <Icon as={MaterialIcons} name="google" color="red.500" size="md" />
             </Pressable>
-          </HStack>
+          </HStack> */}
           <HStack mt="6" justifyContent="center">
             <Text fontSize="sm" color="coolGray.600">
               Already a member?{' '}
             </Text>
-            <Link _text={{ color: 'indigo.500', fontWeight: 'medium', fontSize: 'sm' }}>
+            <Link
+              _text={{
+                color: 'indigo.500',
+                fontWeight: 'medium',
+                fontSize: 'sm',
+              }}
+            >
               Log in
             </Link>
           </HStack>

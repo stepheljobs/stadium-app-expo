@@ -17,7 +17,7 @@ export default function ProfileScreen() {
 
         <Avatar
           size="xl"
-          source={{ uri: require('../assets/images/stadium-logo.png') }}
+          source={{ uri: require('../../assets/images/stadium-logo.png') }}
         />
         <Text fontSize="xl" fontWeight="bold">
           Emily Thompson
@@ -53,7 +53,7 @@ export default function ProfileScreen() {
             <QRCode
               size={250}
               value="XTRM001"
-              logo={require('../assets/images/stadium-logo.png')}
+              logo={require('../../assets/images/stadium-logo.png')}
               logoBackgroundColor='transparent'
             />
           </Box>

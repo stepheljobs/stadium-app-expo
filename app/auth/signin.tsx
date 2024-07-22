@@ -52,12 +52,12 @@ export default function LoginScreen() {
           >
             Quick Access to your Gym Pass
           </Button>
-          <HStack mt="6" justifyContent="center">
+          {/* <HStack mt="6" justifyContent="center">
             <Text fontSize="sm" color="coolGray.600">
               or
             </Text>
-          </HStack>
-          <HStack space={3} justifyContent="center">
+          </HStack> */}
+          {/* <HStack space={3} justifyContent="center">
             <Pressable>
               <Icon as={MaterialIcons} name="apple" color="black" size="md" />
             </Pressable>
@@ -67,7 +67,7 @@ export default function LoginScreen() {
             <Pressable>
               <Icon as={MaterialIcons} name="google" color="red.500" size="md" />
             </Pressable>
-          </HStack>
+          </HStack> */}
           <HStack mt="6" justifyContent="center">
             <Text fontSize="sm" color="coolGray.600">
               Not a member?{" "}

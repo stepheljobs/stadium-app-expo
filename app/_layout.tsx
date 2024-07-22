@@ -1,11 +1,11 @@
 import { Stack } from "expo-router";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
 
-import SplashScreen from '@/components/SplashScreen';
+import SplashScreen from "@/components/SplashScreen";
+import LoginScreen from "./auth/signin";
 
 export default function RootLayout() {
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,15 +15,17 @@ export default function RootLayout() {
   }, []);
 
   if (isLoading) {
-    return <NativeBaseProvider>
-      <SplashScreen />;
-    </NativeBaseProvider> 
+    return (
+      <NativeBaseProvider>
+        <SplashScreen />;
+      </NativeBaseProvider>
+    );
   }
 
   return (
     <NativeBaseProvider>
       <Stack>
-        <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
       </Stack>
     </NativeBaseProvider>
   );
