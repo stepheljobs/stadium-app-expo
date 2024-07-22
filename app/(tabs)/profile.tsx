@@ -26,13 +26,15 @@ export default function ProfileScreen() {
             source={{ uri: "../../assets/images/stadium-logo.png" }}
             alt="Alternate Text"
           />
-          <Button mt={4} bg={"#354AD9"} mb={4} size={"xs"}>
+
+          <Button bg={"#354AD9"} size={"xs"}>
             Edit Profile
           </Button>
 
           <Text fontSize="xl" fontWeight="bold">
             Emily Thompson
           </Text>
+
           <Text fontSize="md" color="coolGray.600">
             +63 901 234 5678
           </Text>
@@ -75,10 +77,13 @@ export default function ProfileScreen() {
               </VStack>
             </VStack>
           </Box>
-
-          <Button bg={"#F2F2F7"} _text={{
-            color: '#354AD9'
-          }}  w="100%" mt={4}>
+          <Button
+            bg={"#F2F2F7"}
+            _text={{
+              color: "#354AD9",
+            }}
+            w="100%"
+          >
             Log out
           </Button>
         </VStack>
