@@ -8,6 +8,7 @@ import {
   Button,
   ScrollView,
   Container,
+  Flex,
 } from "native-base";
 import QRCode from "react-native-qrcode-svg";
 import { color } from "native-base/lib/typescript/theme/styled-system";
@@ -25,6 +26,10 @@ export default function ProfileScreen() {
             source={{ uri: "../../assets/images/stadium-logo.png" }}
             alt="Alternate Text"
           />
+          <Button mt={4} bg={"#354AD9"} mb={4} size={"xs"}>
+            Edit Profile
+          </Button>
+
           <Text fontSize="xl" fontWeight="bold">
             Emily Thompson
           </Text>
@@ -51,27 +56,29 @@ export default function ProfileScreen() {
             </VStack>
           </HStack>
 
-          <Box bg="#323232" borderRadius={10}  p={4}>
-          <VStack space={4} alignItems="center">
-            <Text fontSize="lg" fontWeight="bold" color="white">
-              Show QR Code to the Receptionist
-            </Text>
-            <Box position="relative" width="250" height="250">
-              <QRCode
-                size={250}
-                value="XTRM001"
-                logo={logoFromFile}
-                logoBackgroundColor="transparent"
-              />
-            </Box>
-            <VStack space={2} w="100%">
-              <Text color="white">Gym Access Expiration: 04/30/2024</Text>
-              <Text color="white">Membership Expiration: 12/20/2024</Text>
+          <Box bg="#323232" borderRadius={10} p={4}>
+            <VStack space={4} alignItems="center">
+              <Text fontSize="lg" fontWeight="bold" color="white">
+                Show QR Code to the Receptionist
+              </Text>
+              <Box position="relative" width="250" height="250">
+                <QRCode
+                  size={250}
+                  value="XTRM001"
+                  logo={logoFromFile}
+                  logoBackgroundColor="transparent"
+                />
+              </Box>
+              <VStack space={2} w="100%">
+                <Text color="white">Gym Access Expiration: 04/30/2024</Text>
+                <Text color="white">Membership Expiration: 12/20/2024</Text>
+              </VStack>
             </VStack>
-          </VStack>
           </Box>
 
-          <Button variant="outline" colorScheme="blue" w="100%" mt={4}>
+          <Button bg={"#F2F2F7"} _text={{
+            color: '#354AD9'
+          }}  w="100%" mt={4}>
             Log out
           </Button>
         </VStack>
