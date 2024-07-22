@@ -4,20 +4,25 @@ import {
   VStack,
   HStack,
   Text,
-  Avatar,
+  Image,
   Button,
+  ScrollView,
 } from "native-base";
 import QRCode from "react-native-qrcode-svg";
 
 export default function ProfileScreen() {
+  let logoFromFile = ('../../assets/images/stadium-logo.png');
 
   return (
+    <ScrollView>
     <Box flex={1} bg="white" safeArea>
       <VStack space={4} alignItems="center" p={4}>
 
-        <Avatar
-          size="xl"
-          source={{ uri: require('../../assets/images/stadium-logo.png') }}
+        <Image
+          size={100} 
+          borderRadius={100}
+          source={{ uri: ('../../assets/images/stadium-logo.png') }}
+          alt="Alternate Text" 
         />
         <Text fontSize="xl" fontWeight="bold">
           Emily Thompson
@@ -53,7 +58,7 @@ export default function ProfileScreen() {
             <QRCode
               size={250}
               value="XTRM001"
-              logo={require('../../assets/images/stadium-logo.png')}
+              logo={logoFromFile}
               logoBackgroundColor='transparent'
             />
           </Box>
@@ -68,5 +73,6 @@ export default function ProfileScreen() {
         </Button>
       </VStack>
     </Box>
+    </ScrollView>
   );
 }

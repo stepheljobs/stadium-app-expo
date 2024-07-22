@@ -9,16 +9,10 @@ const SplashScreen = () => {
       <Box safeArea flex={1} bg="#4052B6" justifyContent="center" alignItems="center">
         <VStack space={4} alignItems="center">
           <Image 
-            source={require('../assets/images/react-logo.png')} 
+            source={require('../assets/images/splash-stadium.png')} 
             alt="Stadium Fitness Logo"
-            size="xl"
+            // size="xl"
           />
-          <Text color="white" fontSize="3xl" fontWeight="bold">
-            STADIUM
-          </Text>
-          <Text color="white" fontSize="3xl" fontWeight="bold">
-            FITNESS
-          </Text>
         </VStack>
       </Box>
     </>
