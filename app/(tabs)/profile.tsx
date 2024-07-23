@@ -7,13 +7,10 @@ import {
   Image,
   Button,
   ScrollView,
-  Container,
-  Flex,
 } from "native-base";
 import QRCode from "react-native-qrcode-svg";
-import { color } from "native-base/lib/typescript/theme/styled-system";
-
 export default function ProfileScreen() {
+
   let logoFromFile = "../../assets/images/stadium-logo.png";
 
   return (
@@ -28,7 +25,7 @@ export default function ProfileScreen() {
           />
 
           <Button bg={"#354AD9"} size={"xs"}>
-            Edit Profile
+          Edit Profile
           </Button>
 
           <Text fontSize="xl" fontWeight="bold">

@@ -4,6 +4,7 @@ import { NativeBaseProvider } from "native-base";
 
 import SplashScreen from "@/components/SplashScreen";
 import LoginScreen from "./auth/signin";
+import EditProfile from "./profileScreen/edit";
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
