@@ -1,14 +1,12 @@
-import { Stack } from "expo-router";
+import { Stack, router  } from "expo-router";
 import React, { useCallback, useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
-import { Text, View } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
 import Entypo from '@expo/vector-icons/Entypo';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
 import LoadingScreen from "@/components/splashscreen";
-// import LoginScreen from "./auth/signin";
-// import EditProfile from "./profileScreen/edit";
 
 export default function RootLayout() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -45,6 +43,22 @@ export default function RootLayout() {
     <NativeBaseProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="auth" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="edit"
+          options={{
+            title: "EDIT PROFILE",
+            headerTitleAlign: "center", // Align title to center
+            headerLeft: () => (
+              <Ionicons
+                name="arrow-back" // Adjust icon name as needed
+                size={24} // Adjust size as needed
+                color="#000"
+                onPress={() => router.replace('/profile')}
+              />
+            ),
+          }}
+        />
       </Stack>
     </NativeBaseProvider>
   );

@@ -9,9 +9,12 @@ import {
   ScrollView,
   Heading,
 } from "native-base";
-import QRCode from "react-native-qrcode-svg";
-export default function ProfileScreen() {
+import { Pressable } from "react-native";
+import { Link } from "expo-router";
 
+import QRCode from "react-native-qrcode-svg";
+
+export default function ProfileScreen() {
   let logoFromFile = "../../assets/images/stadium-logo.png";
 
   return (
@@ -28,9 +31,13 @@ export default function ProfileScreen() {
             alt="Alternate Text"
           />
 
-          <Button size={"xs"} variant={'link'}>
-          Edit Profile
-          </Button>
+          <Link href="../edit" asChild>
+            <Pressable>
+              <Button size={"xs"} variant={"link"}>
+                Edit Profile
+              </Button>
+            </Pressable>
+          </Link>
 
           <Text paddingTop={4} fontSize="xl" fontWeight="bold">
             Emily Thompson
@@ -42,9 +49,7 @@ export default function ProfileScreen() {
 
           <Box borderRadius={10} paddingTop={8}>
             <VStack space={4} alignItems="center">
-              <Text fontSize="md">
-                Tap your QR code to check-in
-              </Text>
+              <Text fontSize="md">Tap your QR code to check-in</Text>
               <Box position="relative" width="250" height="250">
                 <QRCode
                   size={250}
@@ -62,11 +67,12 @@ export default function ProfileScreen() {
           </Box>
           <Button
             marginTop={8}
-            bg={"#354AD9"}
             _text={{
               color: "#FFFFFF",
             }}
-            width={'50%'}
+            width={"50%"}
+            bg={"#354AD9"}
+            w="100%"
           >
             Log out
           </Button>

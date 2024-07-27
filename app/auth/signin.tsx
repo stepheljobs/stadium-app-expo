@@ -73,6 +73,7 @@ export default function LoginScreen() {
               Not a member?{" "}
             </Text>
             <Link
+              href='./register'
               _text={{
                 color: "indigo.500",
                 fontWeight: "medium",
