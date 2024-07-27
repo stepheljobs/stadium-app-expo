@@ -66,6 +66,7 @@ export default function RegisterScreen() {
               Already a member?{' '}
             </Text>
             <Link
+            href='/signin'
               _text={{
                 color: 'indigo.500',
                 fontWeight: 'medium',

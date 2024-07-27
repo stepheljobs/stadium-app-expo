@@ -1,10 +1,8 @@
-import { Stack } from "expo-router";
+import { Stack, useNavigation, router  } from "expo-router";
 import React, { useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
-
+import { Ionicons } from "@expo/vector-icons";
 import SplashScreen from "@/components/SplashScreen";
-import LoginScreen from "./auth/signin";
-import EditProfile from "./profileScreen/edit";
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +16,7 @@ export default function RootLayout() {
   if (isLoading) {
     return (
       <NativeBaseProvider>
-        <SplashScreen />;
+        <SplashScreen />
       </NativeBaseProvider>
     );
   }
@@ -27,6 +25,22 @@ export default function RootLayout() {
     <NativeBaseProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="auth" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="edit"
+          options={{
+            title: "EDIT PROFILE",
+            headerTitleAlign: "center", // Align title to center
+            headerLeft: () => (
+              <Ionicons
+                name="arrow-back" // Adjust icon name as needed
+                size={24} // Adjust size as needed
+                color="#000"
+                onPress={() => router.replace('/profile')}
+              />
+            ),
+          }}
+        />
       </Stack>
     </NativeBaseProvider>
   );
