@@ -7,6 +7,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          headerShown: false,
           title: 'Home',
           tabBarIcon: ({ color }: any) => <FontAwesome size={28} name="home" color={color} />,
         }}
@@ -14,6 +15,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
+          headerShown: false,
           title: 'Profile',
           tabBarIcon: ({ color }: any) => <FontAwesome size={28} name="user" color={color} />,
         }}

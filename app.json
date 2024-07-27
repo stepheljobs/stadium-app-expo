@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.stadium.xtremegym"
     },
     "web": {
       "bundler": "metro",
@@ -40,6 +41,12 @@
         "projectId": "f4a50bed-52b3-4c9d-aef0-d456cb0b7a6c"
       }
     },
-    "owner": "stepheljobs"
+    "owner": "stepheljobs",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/f4a50bed-52b3-4c9d-aef0-d456cb0b7a6c"
+    }
   }
 }

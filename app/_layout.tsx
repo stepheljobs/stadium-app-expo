@@ -26,7 +26,7 @@ export default function RootLayout() {
   return (
     <NativeBaseProvider>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </NativeBaseProvider>
   );

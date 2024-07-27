@@ -6,93 +6,33 @@ import {
   VStack,
   Text,
   Avatar,
-  Icon,
-  Pressable,
   Input,
   Button,
-  Image
+  Container,
+  Heading,
+  View,
 } from "native-base";
-import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 
-const FitnessFeedItem = ({ item, onLike, onComment }: any) => {
+const FitnessFeedItem = ({ item, onComment }: any) => {
   const [comment, setComment] = useState("");
 
   return (
-    <Box borderBottomWidth={1} borderColor="coolGray.200" py={2}>
+    <Box
+      padding={4}
+      borderBottomWidth={1}
+      borderColor="coolGray.200"
+      width={"100%"}
+    >
       <HStack space={3} justifyContent="space-between">
-        <Avatar size="48px" source={{ uri: item.avatar }} />
+        <Avatar size="sm" source={{ uri: item.avatar }} />
         <VStack flex={1}>
-          <HStack justifyContent="space-between">
-            <Text bold>{item.name}</Text>
+          <HStack>
+            <Text paddingRight={2} bold>
+              {item.name}
+            </Text>
             <Text color="coolGray.500">@{item.username}</Text>
           </HStack>
           <Text mt={1}>{item.content}</Text>
-          {item.image && (
-            <Box mt={2} rounded="lg" overflow="hidden">
-              <Image
-                source={{ uri: item.image }}
-                alt="Post image"
-                height={200}
-              />
-            </Box>
-          )}
-          <HStack justifyContent="space-between" mt={2}>
-            <Pressable onPress={() => onLike(item.id)}>
-              <HStack space={1} alignItems="center">
-                <Icon
-                  as={FontAwesome5}
-                  name="dumbbell"
-                  color={item.liked ? "red.500" : "coolGray.400"}
-                  size="sm"
-                />
-                <Text color="coolGray.500">{item.likes}</Text>
-              </HStack>
-            </Pressable>
-            <Pressable onPress={() => onComment(item.id)}>
-              <HStack space={1} alignItems="center">
-                <Icon
-                  as={MaterialIcons}
-                  name="comment"
-                  color="coolGray.400"
-                  size="sm"
-                />
-                <Text color="coolGray.500">{item.comments.length}</Text>
-              </HStack>
-            </Pressable>
-            <Icon
-              as={MaterialIcons}
-              name="share"
-              color="coolGray.400"
-              size="sm"
-            />
-          </HStack>
-          <VStack mt={2}>
-            {item.comments.map((comment: any, index: any) => (
-              <HStack key={index} space={2} mt={1}>
-                <Avatar size="24px" source={{ uri: comment.avatar }} />
-                <VStack>
-                  <Text bold>{comment.name}</Text>
-                  <Text>{comment.content}</Text>
-                </VStack>
-              </HStack>
-            ))}
-          </VStack>
-          <HStack mt={2} space={2}>
-            <Input
-              flex={1}
-              placeholder="Add a comment..."
-              value={comment}
-              onChangeText={setComment}
-            />
-            <Button
-              onPress={() => {
-                onComment(item.id, comment);
-                setComment("");
-              }}
-            >
-              Post
-            </Button>
-          </HStack>
         </VStack>
       </HStack>
     </Box>
@@ -167,16 +107,24 @@ export default function FitnessFeed() {
   };
 
   return (
-    <FlatList
-      data={feedItems}
-      renderItem={({ item }) => (
-        <FitnessFeedItem
-          item={item}
-          onLike={handleLike}
-          onComment={handleComment}
+    <View>
+      <Container maxWidth={"100%"}>
+        <Heading padding={4} width={"100%"}>
+          Community
+        </Heading>
+        <FlatList
+          width={"100%"}
+          data={feedItems}
+          renderItem={({ item }) => (
+            <FitnessFeedItem
+              item={item}
+              onLike={handleLike}
+              onComment={handleComment}
+            />
+          )}
+          keyExtractor={(item: any) => item.id.toString()}
         />
-      )}
-      keyExtractor={(item: any) => item.id.toString()}
-    />
+      </Container>
+    </View>
   );
 }
