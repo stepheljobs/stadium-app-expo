@@ -1,130 +1,76 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  FlatList,
   Box,
   HStack,
   VStack,
   Text,
   Avatar,
-  Input,
-  Button,
   Container,
   Heading,
-  View,
+  Card,
+  Checkbox,
+  ScrollView,
+  TextArea,
+  Button,
 } from "native-base";
+import { Colors } from "@/constants/Colors";
 
-const FitnessFeedItem = ({ item, onComment }: any) => {
-  const [comment, setComment] = useState("");
-
+export default function Home() {
   return (
-    <Box
-      padding={4}
-      borderBottomWidth={1}
-      borderColor="coolGray.200"
-      width={"100%"}
-    >
-      <HStack space={3} justifyContent="space-between">
-        <Avatar size="sm" source={{ uri: item.avatar }} />
-        <VStack flex={1}>
-          <HStack>
-            <Text paddingRight={2} bold>
-              {item.name}
-            </Text>
-            <Text color="coolGray.500">@{item.username}</Text>
-          </HStack>
-          <Text mt={1}>{item.content}</Text>
-        </VStack>
-      </HStack>
-    </Box>
-  );
-};
-
-export default function FitnessFeed() {
-  const [feedItems, setFeedItems] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      username: "johnd",
-      avatar: "https://example.com/avatar1.jpg",
-      content: "Just crushed a 5k run! 💪 #FitnessGoals",
-      likes: 15,
-      liked: false,
-      comments: [
-        {
-          name: "Jane Smith",
-          avatar: "https://example.com/avatar2.jpg",
-          content: "Great job!",
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Alice Johnson",
-      username: "alicej",
-      avatar: "https://example.com/avatar3.jpg",
-      content: "New PR on bench press today! 🏋️‍♀️",
-      image: "https://example.com/gym-image.jpg",
-      likes: 23,
-      liked: true,
-      comments: [],
-    },
-    // Add more feed items as needed
-  ]);
-
-  const handleLike = (id: any) => {
-    setFeedItems(
-      feedItems.map((item: any) =>
-        item.id === id
-          ? {
-              ...item,
-              liked: !item.liked,
-              likes: item.liked ? item.likes - 1 : item.likes + 1,
-            }
-          : item
-      )
-    );
-  };
-
-  const handleComment = (id: any, comment: any) => {
-    if (!comment) return;
-    setFeedItems(
-      feedItems.map((item: any) =>
-        item.id === id
-          ? {
-              ...item,
-              comments: [
-                ...item.comments,
-                {
-                  name: "You",
-                  avatar: "https://example.com/your-avatar.jpg",
-                  content: comment,
-                },
-              ],
-            }
-          : item
-      )
-    );
-  };
-
-  return (
-    <View>
+    <ScrollView>
       <Container maxWidth={"100%"}>
-        <Heading padding={4} width={"100%"}>
-          Community
-        </Heading>
-        <FlatList
-          width={"100%"}
-          data={feedItems}
-          renderItem={({ item }) => (
-            <FitnessFeedItem
-              item={item}
-              onLike={handleLike}
-              onComment={handleComment}
-            />
-          )}
-          keyExtractor={(item: any) => item.id.toString()}
-        />
+
+        <HStack padding={4} marginBottom={4} justifyContent={'center'}>
+          <Heading>Welcom back Emily!</Heading>
+          <Box marginRight={2}>
+            <Avatar size={'sm'}>EM</Avatar>
+          </Box>
+        </HStack>
+
+        {/* Your goal */}
+        <Box padding={4} width={'100%'} marginBottom={4}>
+          <Heading>Set fitness goal this week</Heading>
+          <TextArea marginBottom={4} autoCompleteType h={20} placeholder="I want to hit 10k steps this week" w="75%" maxW="300" />
+          <Button backgroundColor={Colors.primaryBlue}>Save</Button>
+        </Box>
+
+        {/* MORNING HABITS */}
+        <Box padding={4} marginBottom={4}>
+          <Heading>Morning Habits</Heading>
+          <Text marginBottom={4} >Morning habits are the cornerstone of a healthy lifestyle, setting the tone for your day and creating a foundation for achieving your fitness goals.</Text>
+
+          <Card width={'100%'}>
+            <Checkbox defaultIsChecked value="">
+              Urinate first thing in the morning
+            </Checkbox>
+            <Checkbox defaultIsChecked value="">
+              Check your current weight
+            </Checkbox>
+            <Checkbox defaultIsChecked value="">
+              Drink your water in the morning
+            </Checkbox>
+          </Card>
+        </Box>
+
+       {/* MORNING HABITS */}
+       <Box padding={4} marginBottom={4}>
+          <Heading>Weekly Habits</Heading>
+          <Text>Weekly habits provide consistency to your fitness journey, helping you build long-term healthy routines and effectively track your progress over time.</Text>
+
+          <Card width={'100%'}>
+            <Checkbox defaultIsChecked value="">
+              Urinate first thing in the morning
+            </Checkbox>
+            <Checkbox defaultIsChecked value="">
+              Check your current weight
+            </Checkbox>
+            <Checkbox defaultIsChecked value="">
+              Drink your water in the morning
+            </Checkbox>
+          </Card>
+        </Box>
+
       </Container>
-    </View>
+    </ScrollView>
   );
 }

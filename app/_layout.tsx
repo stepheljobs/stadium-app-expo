@@ -1,26 +1,44 @@
 import { Stack } from "expo-router";
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { NativeBaseProvider } from "native-base";
+import { Text, View } from 'react-native';
+import Entypo from '@expo/vector-icons/Entypo';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 
-import SplashScreen from "@/components/SplashScreen";
-import LoginScreen from "./auth/signin";
-import EditProfile from "./profileScreen/edit";
+import LoadingScreen from "@/components/splashscreen";
+// import LoginScreen from "./auth/signin";
+// import EditProfile from "./profileScreen/edit";
 
 export default function RootLayout() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [appIsReady, setAppIsReady] = useState(false);
+
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // Show splash screen for 3 seconds
+    async function prepare() {
+      try {
+        await Font.loadAsync(Entypo.font);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
   }, []);
 
-  if (isLoading) {
-    return (
-      <NativeBaseProvider>
-        <SplashScreen />;
-      </NativeBaseProvider>
-    );
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return  <NativeBaseProvider>
+      <LoadingScreen />;
+    </NativeBaseProvider>;
   }
 
   return (

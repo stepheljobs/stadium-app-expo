@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Feather } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
@@ -9,7 +10,15 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           title: 'Home',
-          tabBarIcon: ({ color }: any) => <FontAwesome size={28} name="home" color={color} />,
+          tabBarIcon: ({ color }: any) => <Feather size={28} name="home" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="community"
+        options={{
+          headerShown: false,
+          title: 'Community',
+          tabBarIcon: ({ color }: any) => <Feather size={28} name="globe" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -17,7 +26,7 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           title: 'Profile',
-          tabBarIcon: ({ color }: any) => <FontAwesome size={28} name="user" color={color} />,
+          tabBarIcon: ({ color }: any) => <Feather size={28} name="user" color={color} />,
         }}
       />
     </Tabs>
