@@ -30,7 +30,7 @@ export default function Home() {
         {/* Your goal */}
         <Box padding={4} width={'100%'} marginBottom={4}>
           <Heading>Set fitness goal this week</Heading>
-          <TextArea marginBottom={4} autoCompleteType h={20} placeholder="I want to hit 10k steps this week" w="75%" maxW="300" />
+          <TextArea autoCompleteType={true} marginBottom={4}  h={20} placeholder="I want to hit 10k steps this week" w="75%" maxW="300" />
           <Button backgroundColor={Colors.primaryBlue}>Save</Button>
         </Box>
 
