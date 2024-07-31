@@ -11,11 +11,26 @@ import {
 } from "native-base";
 import { Pressable } from "react-native";
 import { Link } from "expo-router";
-
 import QRCode from "react-native-qrcode-svg";
+import { signOut } from "firebase/auth";
+import { auth } from "@/firebaseConfig";
+import { useRouter } from "expo-router";
+
+let logoFromFile = '../../assets/images/stadium-logo.png';
 
 export default function ProfileScreen() {
-  let logoFromFile = "../../assets/images/stadium-logo.png";
+  const router = useRouter();
+
+  const logout = async () => {
+    //sign out from Firebase
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      router.push("/auth/signin")
+    }).catch((error) => {
+      console.error("Logout error:", error);
+    });
+  };
+
 
   return (
     <ScrollView>
@@ -66,6 +81,7 @@ export default function ProfileScreen() {
             </VStack>
           </Box>
           <Button
+            onPress={logout}
             marginTop={8}
             _text={{
               color: "#FFFFFF",
