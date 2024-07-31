@@ -20,10 +20,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 export default function LoginScreen() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("admin123");
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const logIn = async () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -54,20 +55,23 @@ export default function LoginScreen() {
             Enter your credentials to login
           </Text>
           <FormControl>
-            <Input placeholder="Email address" onChangeText={setEmail} />
+            <Input placeholder="Email address" onChangeText={setEmail} value={email} />
           </FormControl>
           <FormControl>
             <Input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               onChangeText={setPassword}
+              value={password}
               InputRightElement={
-                <Icon
-                  as={<MaterialIcons name="visibility-off" />}
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                />
+                <Pressable onPress={() => setShowPassword(!showPassword)}>
+                  <Icon
+                    as={<MaterialIcons name={showPassword ? "visibility" : "visibility-off"} />}
+                    size={5}
+                    mr="2"
+                    color="muted.400"
+                  />
+                </Pressable>
               }
             />
           </FormControl>
